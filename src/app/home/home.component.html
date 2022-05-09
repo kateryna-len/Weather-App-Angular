@@ -1,0 +1,28 @@
+<div class="main-box">
+  <nav class="navbar navbar-light  ">
+    <div class="container-fluid">
+      <form class="d-flex" [formGroup]="searchForm" (ngSubmit)="sendCity()">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" formControlName="city">
+        <button class="btn btn-outline-success" type="submit" [disabled]="!this.searchForm.valid">Search</button>
+      </form>
+    </div>
+  </nav>
+
+  <div class="card mb-3 mt-5" style="max-width: 540px;" *ngIf="weatherTempr">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="https://naurok-test2.nyc3.digitaloceanspaces.com/102452/images/613909_1647545256.jpg"
+          class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{weatherTempr.name}}</h5>
+          <p class="card-text">Maxtemp: {{(weatherTempr.main.temp_max - 273.15).toFixed(0)}}</p>
+          <p class="card-text">Mintemp: {{(weatherTempr.main.temp_min-273.15).toFixed(0)}}</p>
+          <p class="card-text">Humidity: {{weatherTempr.main.humidity}}%</p>
+          <p class="card-text"><small class="text-muted">Date: {{todaydate | date}}</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
